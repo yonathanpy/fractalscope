@@ -1,11 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int probe(int v) {
-    if (v > 5) return 1;
-    return 0;
-}
+int main(int argc, char *argv[]) {
+    if (argc > 1) {
+        int val = atoi(argv[1]);
 
-int main() {
-    printf("sys_probe active\n");
+        if (val > 5) {
+            printf("1\n");
+        } else {
+            printf("0\n");
+        }
+    }
+
     return 0;
 }
