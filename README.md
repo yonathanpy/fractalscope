@@ -1,56 +1,69 @@
 # fractalscope
 
-fractalscope is a multi-runtime telemetry processing system designed for structured event ingestion, cross-language signal correlation, and behavioral anomaly evaluation.
+fractalscope is a multi-runtime telemetry processing framework designed for structured event ingestion, cross-language correlation, and deterministic anomaly evaluation across heterogeneous execution layers.
 
-## Architecture
+## System Architecture
 
-- Go: event pipeline and orchestration layer  
-- Rust: high-performance correlation engine  
-- Python: statistical anomaly evaluation  
-- C: low-level system probe interface  
-- Bridge: cross-runtime communication layer  
-- Orchestrator: unified execution pipeline  
+The system is partitioned into isolated execution domains:
 
-## Execution Flow
+- go-stream: event ingestion, buffering, and runtime scheduling  
+- rust-core: deterministic correlation engine and signal aggregation  
+- python-analysis: statistical evaluation and anomaly scoring  
+- c-syslayer: low-level system probe interface and execution hooks  
+- bridge: serialization and cross-runtime data normalization  
+- control: runtime supervision and fault containment  
+- orchestrator: unified execution pipeline controller  
 
-1. Event is generated in Go pipeline  
-2. Event is serialized into structured format  
-3. Python analysis layer evaluates anomaly score  
-4. Rust engine performs correlation processing  
-5. C layer performs low-level validation  
-6. Final signal is aggregated and returned  
+## Execution Model
 
-## Build Instructions
+The framework operates on a staged processing pipeline:
 
-### Rust
-cargo build --release
+1. Event generation in Go runtime layer  
+2. Serialization into structured transport format  
+3. Python-based statistical evaluation and scoring  
+4. Rust-based correlation and signal synthesis  
+5. C-level validation of system-level signals  
+6. Aggregation into unified output state  
 
-### Go
-go run orchestrator/main_pipeline.go
+Each stage operates independently and communicates via structured payloads.
 
-### Python
-python3 python-analysis/anomaly_eval.py
+## Build Process
 
-### C
+### Rust Core
+cargo build --release --manifest-path rust-core/Cargo.toml
+
+### Go Stream Layer
+go build ./go-stream
+
+### Python Analysis Layer
+python3 -m compileall python-analysis
+
+### C System Layer
 gcc c-syslayer/sys_probe.c -o sys_probe
 
-## Project Structure
+## Runtime Execution
 
-fractalscope/
-- rust-core/ → correlation engine (Rust)
-- go-stream/ → event pipeline (Go)
-- python-analysis/ → anomaly scoring (Python)
-- c-syslayer/ → system probe layer (C)
-- bridge/ → data format adapter
-- control/ → runtime supervision
-- orchestrator/ → cross-language pipeline runner
+Primary execution entry:
+
+go run orchestrator/main_pipeline.go
+
+## Data Contract
+
+All inter-layer communication follows a structured event schema:
+
+- type: event classification tag  
+- value: numeric or categorical signal  
+- timestamp: ingestion time reference  
+- metadata: optional contextual payload  
+
+## Design Properties
+
+- deterministic execution flow  
+- bounded buffer processing model  
+- stateless inter-stage communication  
+- modular language-isolated runtime layers  
+- explicit event transformation pipeline  
 
 ## Scope
 
-fractalscope is intended for telemetry analysis, behavioral signal correlation, and cross-runtime evaluation in controlled environments.
-
-## Notes
-
-- Modular multi-language architecture  
-- Structured event-based processing  
-- Designed for extensibility and observability research  
+fractalscope is intended for telemetry analysis, behavioral signal correlation, and multi-runtime evaluation in controlled system environments.
