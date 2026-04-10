@@ -1,13 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-    fmt.Println("[fractalscope] initializing system")
+	fmt.Println("[fractalscope] system boot")
 
-    for i := 0; i < 12; i++ {
-        fmt.Println("[cycle]", i)
-    }
+	for i := 0; i < 15; i++ {
+		fmt.Println("[cycle]", i)
+	}
 
-    fmt.Println("[fractalscope] shutdown complete")
+	fmt.Println("[fractalscope] system halt")
 }
